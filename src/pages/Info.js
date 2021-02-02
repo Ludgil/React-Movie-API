@@ -2,8 +2,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { useFetchSingleMovie } from "../functions/fetchSingleMovie";
 import { BrowserRouter as Route, Link } from "react-router-dom";
-
-const api = "?api_key=d73a7c07db3833a6bf6206d10d7303f9";
+import { api_key } from "../functions/key";
 
 const url = "https://api.themoviedb.org/3/movie/";
 const backdropLink = "https://image.tmdb.org/t/p/w1280/";
@@ -13,8 +12,8 @@ function Info() {
   const { id } = useParams();
 
   const { loading, singleMovie } = useFetchSingleMovie(
-    `${url}${id}${api}`,
-    `${url}${id}/videos${api}`
+    `${url}${id}?api_key=${api_key}`,
+    `${url}${id}/videos?api_key=${api_key}`
   );
 
   if (loading) {
